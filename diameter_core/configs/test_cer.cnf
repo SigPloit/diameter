@@ -1,0 +1,210 @@
+##  Begins of GENERIC SECTION  ##
+ 
+[GENERIC]
+	#Possible values: S6A, S9, SLG, SLH, SH, CX
+	interface = S6A
+
+	# Diameter command codes:
+	#	Basic Interface
+	#		* Capabilities-Exchange			=> CER/CEA		(257)
+	#		* Device-Watchdog				=> DWR/DWA		(280)
+	#
+	#	Interface >>> S6a <<<
+	#		* Update-Location 				=> ULR/ULA		(316)
+	#		* Cancel-Location 				=> CLR/CLA		(317)
+	#		* Authentication-Information 	=> AIR/AIA		(318)
+	#		* Insert-Subscriber-Data		=> IDR/IDA		(319)
+	#		* Delete-Subscriber-Data		=> DSR/DSA		(320)
+	#		* Purge-UE 						=> PUR/PUA		(321)
+	#		* Reset 						=> RSR/RSA		(322)
+	#		* Notify 						=> NOR/NOA		(323)
+	#		* ME-Identity-Check				=> ECR/ECA		(324)
+	#
+	#	Interface >>> SLh <<<
+	#		* LCS-Routing-Info				=> RIR/RIA		(8388622)
+	#
+	#	Interface >>> SLg <<<
+	#		* Provide-Location				=> PLR/PLA		(8388620)
+	#		* Location-Report				=> LRR/LRA		(8388621)
+	
+	# List here all the messages to test
+	#		<n_316~324>		# both request and answer messages
+	#		<n_316~324>.r	# only request message
+	#		<n_316~324>.a	# only answer message
+
+	#List of base message's command codes. Accepted: CER/CEA and DWR/DWA
+	base_message_list = 257.r, 257.a, 280.a
+	
+	#List of 3gpp message's command codes for the specified interface
+	3gpp_messages_list = 323.r, 
+
+	#Configuration file for raw messages
+	raw_config_file = hss_raw.txt
+	
+	origin_host = tiit.tim.it
+	
+	origin_realm = tim.it
+	
+	destination_host = freediameter.tim.it
+	
+	destination_realm = tim.it
+
+	
+	
+##  Begins of FUZZY SECTION  ##
+ 
+[FUZZY]
+	[[323]]
+		[[[DESTINATION_HOST]]]
+			custom = 'ssa',
+
+	[[318]]
+		[[[DESTINATION_HOST]]]
+			custom =  'asd',
+		
+	[[316]]
+		[[[DESTINATION_HOST]]]
+			custom = 'banana',
+
+##  Begins of AVPs SECTION  ## 
+#
+# classic AVP definition:
+#   [AVP_NAME]
+#     value =  			the value of the AVP>
+#	  flags = ,			a list of flags, available values V (vendor-specific), M (mandatory), P(encription)
+#
+# for multiple AVP's of the same type:
+#   [AVP_NAME]
+#	  type = multiple	specify that this section has multiple AVPs of the same type
+# 	  number = 			the number of AVPs of the <AVP_NAME> type
+#	  [[AVP_1]]			1st AVP
+#		 value = 
+#		 flags = ,
+#	  	...
+#	  [[AVP_N]]			Nth AVP
+#		 value = 
+#		 flags = ,
+#	
+# for grouped AVPs:
+#	[AVP_NAME]
+#	  type = grouped	specify that this section is of type grouped. 
+#						The following sub-sections are childs of the <AVP_NAME> section
+#	  [[AVP_NAME_1]]	1st AVP
+#		 values = 
+#		 flags = ,
+#	 	...
+#	  [[AVP_NAME_1]]	Nth AVP
+#		 values = 
+#		 flags = ,
+
+[AVPS]
+	[[RESULT_CODE]]
+		value = 2001
+		flags = M,
+
+	[[ORIGIN_HOST]]
+		value = tiit.tim.it
+		flags = M,
+
+	[[ORIGIN_REALM]]
+		value = tim.it
+		flags = M,
+##TO REMOVE
+	[[HOST_IP_ADDRESS]]
+		value = 163.162.22.169
+		flags = M,
+
+	[[VENDOR_ID]]
+		value = 10415
+		flags = M,
+
+	[[PRODUCT_NAME]]
+		value = DiameterToolsClient
+		flags = ,
+
+#	[[ORIGIN_STATE_ID]]
+#		value = 0
+#		flags = ,
+
+	[[SUPPORTED_VENDOR_ID]]
+		value = 10415
+		flags = M,
+
+#S6a
+	[[AUTH_APPLICATION_ID]]
+		value = 16777251
+		flags = M,
+
+#SLg
+#	[[AUTH_APPLICATION_ID]]
+#		value = 16777255
+#		flags = M,
+
+#SLh
+#	[[AUTH_APPLICATION_ID]]
+#		value = 16777291
+#		flags = M,
+
+#Sh
+#	[[AUTH_APPLICATION_ID]]
+#		value = 16777217
+#		flags = M,
+
+#S9
+#	[[AUTH_APPLICATION_ID]]
+#		value = 16777267
+#		flags = M,
+
+#Cx
+#	[[AUTH_APPLICATION_ID]]
+#		value = 16777216
+#		flags = M,
+
+	[[INBAND_SECURITY_ID]]
+		value = 0
+		flags = M,
+
+	[[VENDOR_SPECIFIC_APPLICATION_ID]]
+		type=multiple
+		[[[AVP_1]]]
+			type = grouped
+			flags = M,
+			[[[[VENDOR_ID]]]]
+				value = 10415
+				flags = M,
+
+			[[[[AUTH_APPLICATION_ID]]]]
+				value = 16777251
+				flags = M,
+		[[[AVP_2]]]
+			type = grouped
+			flags = M,
+			[[[[VENDOR_ID]]]]
+				value = 104153
+				flags = M,
+
+			[[[[AUTH_APPLICATION_ID]]]]
+				value = 16777251
+				flags = M,
+
+	[[FIRMWARE]]
+		value = 0
+		flags = ,
+	
+	[[AUTH_SESSION_STATE]]
+		value = 0
+		flags = ,
+		
+	[[DESTINATION_HOST]]
+		value = localhost.localdomain
+		flags = ,
+		
+	[[DESTINATION_REALM]]
+		value = localdomain
+		flags = ,
+	
+	[[USER_NAME]]
+		value = 222011234567890
+		flags = ,
+		
+		
