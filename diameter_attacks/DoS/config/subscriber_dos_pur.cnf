@@ -1,5 +1,6 @@
 ##  Begins of GENERIC SECTION  ##
- 
+
+
 [GENERIC]
     #Possible values: S6A, S9, SLG, SLH, SH, CX
     interface = S6A
@@ -36,14 +37,16 @@
     base_message_list = 257.r, 257.a, 280.a
     
     #List of 3gpp message's command codes for the specified interface
-    3gpp_messages_list = 316.r, 
+    3gpp_messages_list = 321.r, 
+
+    
+    origin_host = TBD
+    
+    origin_realm = TBD
     
     
-    origin_host = attacker.epc.mnc006.mcc999.3gppnetwork.org
-    
-    origin_realm = epc.mnc006.mcc999.3gppnetwork.org
-    
-    destination_realm = TBD
+    destination_realm = TO BE SET TO THE DESTINATION NETWORK TO WHICH THE IMSI
+    BELONGS
 
 
 ##  Begins of AVPs SECTION  ## 
@@ -81,13 +84,9 @@
     [[RESULT_CODE]]
         value = 2001
         flags = M,
-        
-    [[USER_NAME]]
-        value = TBD
-        flags = M,
     
     [[HOST_IP_ADDRESS]]
-        value = TBD
+        value = tbd
         flags = M,
 
     [[VENDOR_ID]]
@@ -95,7 +94,7 @@
         flags = M,
 
     [[PRODUCT_NAME]]
-        value = PTA
+        value = SIGPLOIT
         flags = ,
 
     [[ORIGIN_STATE_ID]]
@@ -124,16 +123,18 @@
         value = 1
         flags = M,
 
+    [[USER_NAME]]
+        value = tbd
+        flags = M,
+
     [[VISITED_PLMN_ID]]
-        value = 99907       
-        flags = M,V
-        vendor = 10415
-          
+        value = 123001      
+        flags = M,
+
     [[SUPPORTED_FEATURES]]
         type = grouped
         flags = V,M
-                vendor = 10415
-        
+        vendor = 10415
         [[[VENDOR_ID]]]
             value = 10415
             flags = M,
@@ -147,14 +148,3 @@
             value = 0
             flags = V
             vendor = 10415
-
-    [[RAT_TYPE]]
-        value = 1004
-        flags = V,M,
-        vendor = 10415
-
-    [[ULR_FLAGS]]
-        value = 00100010
-        flags = V,M,
-        vendor = 10415
-        
