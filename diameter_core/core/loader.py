@@ -7,7 +7,7 @@ DEFAULT_PLUGIN_MODULE = "core.plugins"
 ##
 ## @brief      Helper class to dinamically load required interfaces
 ## 
-## @author: Ilario Dal Grande <ilario.dalgrande@guest.telecomitalia.it>
+## @author: Ilario Dal Grande
 ##
 class PluginLoader:
     def __init__(self, conf):

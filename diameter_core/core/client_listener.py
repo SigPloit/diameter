@@ -1,10 +1,10 @@
 import threading
 from sctp import sctpsocket_tcp
 import socket
-from commons import logNormal, logErr, logOk, byteToHex
+from commons import logNormal, logErr, logOk
 import errno
 import time
-from diameter.diamCommandCodes import DiamCommandCodes
+from core.diameter.diamCommandCodes import DiamCommandCodes
 import struct
 from sender_listener import SenderListener
 from _socket import timeout
@@ -14,13 +14,13 @@ import signal
 ##
 ## @brief      Class that execute all the actions for the client mode
 ## 
-## @author: Ilario Dal Grande <ilario.dalgrande@guest.telecomitalia.it>
+## @author: Ilario Dal Grande
 ##
 class ClientListener(threading.Thread):
     def __init__(self, server_address, messages, cer, dwa, isSCTP = True, 
                  isVerbose = False, msgs_freq=1, wait_time=20):
         threading.Thread.__init__(self)
-        
+
         self.TAG_NAME = 'CLIENT_LISTENER'
         
         if isSCTP:

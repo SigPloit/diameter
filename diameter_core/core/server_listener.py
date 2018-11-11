@@ -3,8 +3,8 @@ from sctp import sctpsocket_tcp
 import socket
 import struct
 from commons import byteToHex, logErr, logOk, logWarn, logNormal
-from diameter.diamAVPCodes import DiamAVPCodes
-from diameter.diamCommandCodes import DiamCommandCodes
+from core.diameter.diamAVPCodes import DiamAVPCodes
+from core.diameter.diamCommandCodes import DiamCommandCodes
 import time
 from sender_listener import SenderListener
 import errno
@@ -15,7 +15,7 @@ import signal
 ##
 ## @brief      Class that execute all the actions for the server mode
 ## 
-## @author: Ilario Dal Grande <ilario.dalgrande@guest.telecomitalia.it>
+## @author: Ilario Dal Grande 
 ##
 class ServerListener(threading.Thread):
     def __init__(self, server_address, messages, cea, dwa, accepted_ips=None,

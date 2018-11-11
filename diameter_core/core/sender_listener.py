@@ -9,7 +9,7 @@ import signal
 ##
 ## @brief      Class that actually sends all the Diameter messages
 ## 
-## @author: Ilario Dal Grande <ilario.dalgrande@guest.telecomitalia.it>
+## @author: Ilario Dal Grande 
 ##
 class SenderListener(threading.Thread):
     def __init__(self, connection, messages, start_time=None, isVerbose = False, 

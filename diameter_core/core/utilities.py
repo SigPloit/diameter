@@ -4,16 +4,16 @@ import os
 from os import listdir
 from os.path import isfile, join
 
-from diameter.diamCommandCodes import DiamCommandCodes
+from core.diameter.diamCommandCodes import DiamCommandCodes
 from configobj import ConfigObj, ConfigObjError
-from diameter.diamAVPExceptions import MissingMandatoryAVPException
-from diameter.diamAVPCodes import DiamAVPCodes
-from diameter.diamAVP import DiamAVP
+from core.diameter.diamAVPExceptions import MissingMandatoryAVPException
+from core.diameter.diamAVPCodes import DiamAVPCodes
+from core.diameter.diamAVP import DiamAVP
 from commons import *
 from plugins.common_messages_classes import DiamGenericMessage
 
 ##
-## @author: Ilario Dal Grande <ilario.dalgrande@guest.telecomitalia.it>
+## @author: Ilario Dal Grande
 ##
 
 DEFAULT_MSGS = [

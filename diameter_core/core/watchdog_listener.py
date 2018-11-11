@@ -2,15 +2,15 @@ import threading
 import socket
 from commons import logNormal, logErr, logOk, logWarn
 import errno
-from diameter.diamCommandCodes import DiamCommandCodes
+from core.diameter.diamCommandCodes import DiamCommandCodes
 import struct
 from _socket import timeout
-import signal
+
 
 ##
 ## @brief      Class that listen and respond to all Diameter's Watchdog messages
 ## 
-## @author: Ilario Dal Grande <ilario.dalgrande@guest.telecomitalia.it>
+## @author: Ilario Dal Grande 
 ##
 class WatchdogListener(threading.Thread):
     def __init__(self, connection, dwa, isVerbose=False):

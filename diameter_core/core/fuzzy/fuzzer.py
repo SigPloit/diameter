@@ -240,7 +240,7 @@ class Fuzzer():
         allowed = ('abcdefghijklmnopqrstuvwxyz012345678' 
                   'ABCDEFGHIJKLMNOPQRSTUVWXYZ-_:.;,' 
                   )
-        allowed += 'òàùèéç°\\|!"£$%&/()=?^\'[]+*@#��������<>'          
+        allowed += 'òàùèéç°\\|!"£$%&/()=?^\'[]+*@#��������<>'          
         chars = []
         if regexp is not None:
             chars = re.findall(regexp, allowed)
