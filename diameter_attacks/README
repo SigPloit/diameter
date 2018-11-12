@@ -1,5 +1,6 @@
 Installation Requirements
  pysctp --> https://github.com/P1sec/pysctp
+ diameter core package
  
 Usage
 Server Mode
