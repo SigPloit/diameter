@@ -1,10 +1,9 @@
 #!/usr/bin/env  python
 # -*- coding: utf-8 -*-
 
-#       subscriber_dos.py
-#       
-#       Copyright 2018 Rosalia d'Alessandro <list_mailing@libero.it>
-#                     
+#       information_gathering.py
+#       Copyright 2015 Rosalia d'Alessandro <list_mailing@libero.it>
+#                      Ilario Dal Grande 
 #
 
 #       Redistribution and use in source and binary forms, with or without
@@ -62,50 +61,21 @@ from core.commons import logOk, logWarn, logErr, logNormal
 ## 
 ## Basic usage examples:
 ## act as a client connecting to <remote-host-ip>
-##    python subscriber_dos.py -svt client -c <conf_file> <remote-host-ip>      
-## act as a server and accept connection only from <accept-ip>. the <remote-host-ip> 
+##    python information_gathering.py -svt client -c <conf_file> <remote-host-ip>      
+## act as a server and accept connection only from <accept-remote-ip>. the <local-host-ip> 
 ##   is your local IP      
-##     python subscriber_dos.py -svt server -c <conf file>-a <accept-ip> 
-##      <remote-host-ip>      
+##     python information_gathering.py -svt server -c <conf file> -a <accept-remote-ip> 
+##      <local-ip>      
 ## conf files:
-##    * subscriber_dos_ulr.cnf :  ULR message
-##      - The AVP IMSI must be set to the target IMSI
-##      - The AVP Origin-Host must be set to a non-existent MME
-##      - Optionally, the AVP VPLMN-Id can be set to a non-existent VPLMN.
-##      - Host-IP and destination-realm must be SET
-##      - Destination-Host is not required since routing is based on DST REALM
 ##
-##    * subscriber_dos_idr_apn.cnf :  IDR message
-##      - The AVP Username must be set to the target IMSI
+##    * information_gathering_cer_cea.cnf :  CER/CEA message
 ##      - The AVP Origin-Realm and Origin-Host can set to a valid roaming partner 
-##        in order to bypass FW consistency checks to which the Username is belonging
+##        in order to bypass FW whitelists
 ##      - Host-IP must be set
-##      - Destination-Realm and Destination-Host must be set to the MME and network
-##        where the Username is roaming
-##      - APN value within AVP SUBSCRIPTION_DATA is already set to an invalid 
-##      - value (hex string 6c70672e706565)
-##
-##    * subscriber_dos_clr.cnf :  CLR message
-##      - The AVP IMSI must be set to the target IMSI
-##      - The AVP Origin-Realm and Origin-Host shall be consistent with IMSI
-##        in order to bypass FW consistency checks to which the Username is belonging
-##      - Host-IP must be set
-##      - Destination-Realm and Destination-Host must be set to the MME and network
-##        where the IMSI is roaming
-##
-##    * subscriber_dos_pur.cnf :  PUR message
-##      - The AVP IMSI must be set to the target IMSI
-##      - The AVP Origin-Realm and Origin-Host shall be set to any value
-##      - Host-IP must be set
-##      - Destination-Realm and Destination-Host must be set to the HSS and network
-##        where the IMSI belongs
-##
-##    * subscriber_dos_pur.cnf :  DSR message
-##      - The AVP IMSI must be set to the target IMSI
-##      - The AVP Origin-Realm and Origin-Host shall be consistent with the IMSI
-##      - Host-IP must be set
-##      - Destination-Realm and Destination-Host must be set to the MME and network
-##        where the IMSI is roaming
+##      - Destination-Realm and Destination-Host must be set to the realm of the target network 
+##      - Application Type: S6a, S6c, S9, SLg, SLh   
+
+
 VERSION = "2.1"
 DIAMETER_PORT = 3868
 DEFAULT_MSG_FREQ = 20

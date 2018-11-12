@@ -20,9 +20,9 @@ test_list = 316, 317, 318, 319, 320, 321, 322, 323, 324
 #		[[[AVP_NAME]]]		# the AVP name to customize the value
 #			custom = ,		# the list of customizations for the specified AVP
 #
-#							Special TAGs for personalizations:
-#								* %%DESTINATION_HOST%%			=> replace at run-time this string with the destination host
-#								* %%ORIGIN_HOST%%				=> replace at run-time this string with the origin host
+# Special TAGs for personalizations:
+# * %%DESTINATION_HOST%% => replace at run-time this string with the destination host
+# * %%ORIGIN_HOST%% => replace at run-time this string with the origin host
 #
 [CUSTOMIZATIONS]
 	[[NOR]]

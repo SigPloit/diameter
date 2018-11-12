@@ -1,0 +1,45 @@
+  Begins of GENERIC SECTION  ##
+ 
+[GENERIC]
+    #Possible values: S6A, S9, SLG, SLH, SH, CX
+    interface = S6A, S9, SLG, SLH, SH, CX
+
+    # Diameter command codes:
+    #   Basic Interface
+    #       * Capabilities-Exchange         => CER/CEA      (257)
+    #       * Device-Watchdog               => DWR/DWA      (280)
+    #
+    #   Interface >>> S6a <<<
+    #       * Update-Location               => ULR/ULA      (316)
+    #       * Cancel-Location               => CLR/CLA      (317)
+    #       * Authentication-Information    => AIR/AIA      (318)
+    #       * Insert-Subscriber-Data        => IDR/IDA      (319)
+    #       * Delete-Subscriber-Data        => DSR/DSA      (320)
+    #       * Purge-UE                      => PUR/PUA      (321)
+    #       * Reset                         => RSR/RSA      (322)
+    #       * Notify                        => NOR/NOA      (323)
+    #       * ME-Identity-Check             => ECR/ECA      (324)
+    #
+    #   Interface >>> SLh <<<
+    #       * LCS-Routing-Info              => RIR/RIA      (8388622)
+    #
+    #   Interface >>> SLg <<<
+    #       * Provide-Location              => PLR/PLA      (8388620)
+    #       * Location-Report               => LRR/LRA      (8388621)
+    
+    # List here all the messages to test
+    #       <n_316~324>     # both request and answer messages
+    #       <n_316~324>.r   # only request message
+    #       <n_316~324>.a   # only answer message
+
+    #List of base message's command codes. Accepted: CER/CEA and DWR/DWA
+    base_message_list = 257.r, 257.a, 280.a
+
+    
+    origin_host = TBD
+    
+    origin_realm = TBD
+    
+    destination_host = TBD
+    
+    destination_realm = TBD

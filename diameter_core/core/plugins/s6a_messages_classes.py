@@ -6,8 +6,9 @@ from core.commons import printYellow
 #from dpkt.diameter import AVP
 __MULTIPLE_DST_REALM__ = 0
 __MULTIPLE_DST_HOST__  = 0
+
 ##
-## @author: Ilario Dal Grande <ilario.dalgrande@guest.telecomitalia.it>
+## @author: Ilario Dal Grande
 ##
 
 ''' >>> S6a INTERFACE <<< '''

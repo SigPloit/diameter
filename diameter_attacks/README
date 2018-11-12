@@ -1,0 +1,30 @@
+Installation Requirements
+ pysctp --> https://github.com/P1sec/pysctp
+ 
+Usage
+Server Mode
+The tool acts as a server. This means that the script open a socket in listening mode and waits for CER.
+It is possible to filter incoming connection requests on IP basis
+
+ 
+Client Mode
+The tool acts as a server. This means that the script send a CER and waits for a CEA
+It is possible to filter incoming connection requests on IP basis
+
+The tools supports several of the attack scenarios described in FS.19.
+For each attack scenario different Diameter messages of different 3GPP interfaces can be sent.
+Currently only S6a is supported.
+
+The attack scenario is identified by a script containing the main and a configuration file.
+
+Basic usage examples:
+
+python <attacck_scenario_script> -svt client -c <conf_file> <remote-host-ip>      
+python <attacck_scenario_script> -svt server -c <conf file> -a <accept-remote-ip> 
+      <local-ip>      
+
+e.g. 
+python information_gathering.py -svt client -c conf/information_gathering_cer_cea.cnf 63.141.228.110 
+python information_gathering.py -svt server -c conf/information_gathering_cer_cea.cnf -a 63.141.228.110 80.116.201.159 
+
+Description of config files to use for attacks are reported in each attack scenario script.

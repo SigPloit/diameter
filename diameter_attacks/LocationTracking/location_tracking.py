@@ -1,7 +1,7 @@
 #!/usr/bin/env  python
 # -*- coding: utf-8 -*-
 
-#       subscriber_dos.py
+#       location_tracking.py
 #       
 #       Copyright 2018 Rosalia d'Alessandro <list_mailing@libero.it>
 #                     
@@ -62,50 +62,22 @@ from core.commons import logOk, logWarn, logErr, logNormal
 ## 
 ## Basic usage examples:
 ## act as a client connecting to <remote-host-ip>
-##    python subscriber_dos.py -svt client -c <conf_file> <remote-host-ip>      
+##    python location_tracking.py -svt client -c <conf_file> <remote-host-ip>      
 ## act as a server and accept connection only from <accept-ip>. the <remote-host-ip> 
 ##   is your local IP      
-##     python subscriber_dos.py -svt server -c <conf file>-a <accept-ip> 
+##     python location_tracking.py -svt server -c <conf file>-a <accept-ip> 
 ##      <remote-host-ip>      
 ## conf files:
-##    * subscriber_dos_ulr.cnf :  ULR message
-##      - The AVP IMSI must be set to the target IMSI
-##      - The AVP Origin-Host must be set to a non-existent MME
-##      - Optionally, the AVP VPLMN-Id can be set to a non-existent VPLMN.
-##      - Host-IP and destination-realm must be SET
-##      - Destination-Host is not required since routing is based on DST REALM
 ##
-##    * subscriber_dos_idr_apn.cnf :  IDR message
+##    * location_tracking_idr.cnf :  IDR message
 ##      - The AVP Username must be set to the target IMSI
 ##      - The AVP Origin-Realm and Origin-Host can set to a valid roaming partner 
 ##        in order to bypass FW consistency checks to which the Username is belonging
 ##      - Host-IP must be set
 ##      - Destination-Realm and Destination-Host must be set to the MME and network
 ##        where the Username is roaming
-##      - APN value within AVP SUBSCRIPTION_DATA is already set to an invalid 
-##      - value (hex string 6c70672e706565)
-##
-##    * subscriber_dos_clr.cnf :  CLR message
-##      - The AVP IMSI must be set to the target IMSI
-##      - The AVP Origin-Realm and Origin-Host shall be consistent with IMSI
-##        in order to bypass FW consistency checks to which the Username is belonging
-##      - Host-IP must be set
-##      - Destination-Realm and Destination-Host must be set to the MME and network
-##        where the IMSI is roaming
-##
-##    * subscriber_dos_pur.cnf :  PUR message
-##      - The AVP IMSI must be set to the target IMSI
-##      - The AVP Origin-Realm and Origin-Host shall be set to any value
-##      - Host-IP must be set
-##      - Destination-Realm and Destination-Host must be set to the HSS and network
-##        where the IMSI belongs
-##
-##    * subscriber_dos_pur.cnf :  DSR message
-##      - The AVP IMSI must be set to the target IMSI
-##      - The AVP Origin-Realm and Origin-Host shall be consistent with the IMSI
-##      - Host-IP must be set
-##      - Destination-Realm and Destination-Host must be set to the MME and network
-##        where the IMSI is roaming
+##      - IDR-Flag already set to 3 (EPS Location is Required)
+
 VERSION = "2.1"
 DIAMETER_PORT = 3868
 DEFAULT_MSG_FREQ = 20
